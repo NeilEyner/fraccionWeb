@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Fracciones Divertidas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== BARRA DE PROGRESO GLOBAL ===== -->
+  <div class="progress-bar-wrapper">
+    <div class="progress-bar-track">
+      <div class="progress-bar-fill" id="progressFill"></div>
+    </div>
+    <div class="progress-dots" id="progressDots"></div>
+  </div>
+
+  <!-- ===== CONTENEDOR PRINCIPAL ===== -->
+  <main class="screens-wrapper" id="screensWrapper">
+
+    <!-- ════════════════════════════════════════
+         PANTALLA 1: BIENVENIDA
+    ════════════════════════════════════════ -->
+    <section class="screen active" id="screen-0" data-screen="0">
+      <div class="screen-inner">
+
+        <div class="welcome-deco deco-left">
+          <div class="deco-circle c1"></div>
+          <div class="deco-circle c2"></div>
+        </div>
+        <div class="welcome-deco deco-right">
+          <div class="deco-circle c3"></div>
+          <div class="deco-circle c4"></div>
+        </div>
+
+        <div class="welcome-hero">
+          <div class="fraction-display hero-fraction" aria-hidden="true">
+            <span class="frac-num">1</span>
+            <span class="frac-bar"></span>
+            <span class="frac-den">2</span>
+          </div>
+          <h1 class="hero-title">Fracciones<br /><span class="highlight-word">Divertidas</span></h1>
+          <p class="hero-subtitle">Aprende a dividir el mundo en partes iguales</p>
+        </div>
+
+        <div class="character-row">
+          <div class="pizza-slice ps1" aria-hidden="true"></div>
+          <div class="pizza-slice ps2" aria-hidden="true"></div>
+          <div class="pizza-slice ps3" aria-hidden="true"></div>
+          <div class="pizza-slice ps4" aria-hidden="true"></div>
+        </div>
+
+        <div class="bottom-nav first-screen">
+          <button class="btn-primary pulse-anim" id="btnStart" aria-label="Comenzar a aprender">
+            <i data-lucide="play-circle"></i>
+            <span>Comenzar</span>
+          </button>
+          <div class="tap-hint" aria-hidden="true">
+            <i data-lucide="hand"></i>
+            <span>Presiona aqui</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         PANTALLA 2: VIDEO
+    ════════════════════════════════════════ -->
+    <section class="screen" id="screen-1" data-screen="1">
+      <div class="screen-inner">
+
+        <div class="section-header">
+          <div class="section-icon mint">
+            <i data-lucide="video"></i>
+          </div>
+          <h2 class="section-title">Mira este video</h2>
+          <p class="section-desc">Un video para aprender sobre fracciones</p>
+        </div>
+
+        <div class="video-card">
+          <div class="video-badge">
+            <i data-lucide="star"></i> Video educativo
+          </div>
+          <div class="video-container">
+            <iframe
+              src="https://www.youtube.com/embed/n0FZhQ_GkKw?rel=0&modestbranding=1"
+              title="Fracciones para niños"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
+          <div class="video-tip">
+            <i data-lucide="volume-2"></i>
+            <span>Sube el volumen para escuchar mejor</span>
+          </div>
+        </div>
+
+        <div class="bottom-nav">
+          <button class="btn-secondary" id="btn1Back" aria-label="Volver">
+            <i data-lucide="arrow-left"></i>
+            <span>Atras</span>
+          </button>
+          <button class="btn-primary" id="btn1Next" aria-label="Siguiente seccion">
+            <span>Siguiente</span>
+            <i data-lucide="arrow-right"></i>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         PANTALLA 3: APRENDER
+    ════════════════════════════════════════ -->
+    <section class="screen" id="screen-2" data-screen="2">
+      <div class="screen-inner">
+
+        <div class="section-header">
+          <div class="section-icon baby-blue">
+            <i data-lucide="book-open"></i>
+          </div>
+          <h2 class="section-title">Que es una fraccion</h2>
+          <p class="section-desc">Aprende los conceptos basicos</p>
+        </div>
+
+        <div class="learn-cards-grid">
+
+          <div class="learn-card card-mint">
+            <div class="learn-card-icon"><i data-lucide="divide"></i></div>
+            <h3>Numerador</h3>
+            <p>Es el numero de <strong>arriba</strong>. Dice cuantas partes tomamos.</p>
+            <div class="fraction-mini">
+              <span class="fn highlight-top">3</span>
+              <span class="fbar"></span>
+              <span class="fd">4</span>
+            </div>
+          </div>
+
+          <div class="learn-card card-blue">
+            <div class="learn-card-icon"><i data-lucide="layers"></i></div>
+            <h3>Denominador</h3>
+            <p>Es el numero de <strong>abajo</strong>. Dice en cuantas partes se divide.</p>
+            <div class="fraction-mini">
+              <span class="fn">3</span>
+              <span class="fbar"></span>
+              <span class="fd highlight-bottom">4</span>
+            </div>
+          </div>
+
+          <div class="learn-card card-yellow learn-card-wide">
+            <div class="learn-card-icon"><i data-lucide="pie-chart"></i></div>
+            <h3>Ejemplo visual</h3>
+            <p>Si una pizza tiene <strong>4 partes</strong> y comes <strong>1</strong>, comiste <strong>1/4</strong> de la pizza.</p>
+            <div class="pizza-demo" aria-label="Pizza dividida en 4 partes, una coloreada">
+              <div class="pizza-piece eaten"></div>
+              <div class="pizza-piece"></div>
+              <div class="pizza-piece"></div>
+              <div class="pizza-piece"></div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="bottom-nav">
+          <button class="btn-secondary" id="btn2Back" aria-label="Volver">
+            <i data-lucide="arrow-left"></i>
+            <span>Atras</span>
+          </button>
+          <button class="btn-primary" id="btn2Next" aria-label="Siguiente seccion">
+            <span>Siguiente</span>
+            <i data-lucide="arrow-right"></i>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         PANTALLA 4: JUEGOS
+    ════════════════════════════════════════ -->
+    <section class="screen" id="screen-3" data-screen="3">
+      <div class="screen-inner">
+
+        <div class="section-header">
+          <div class="section-icon cream">
+            <i data-lucide="gamepad-2"></i>
+          </div>
+          <h2 class="section-title">Hora de Jugar</h2>
+          <p class="section-desc">Pon a prueba lo que aprendiste</p>
+        </div>
+
+        <div class="games-grid">
+
+          <a class="game-card gc-mint"
+             href="https://www.funbrain.com/games/fresh-baked-fractions"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="Abrir juego Fresh Baked Fractions">
+            <div class="game-card-icon"><i data-lucide="cookie"></i></div>
+            <div class="game-card-body">
+              <span class="game-tag">Juego 1</span>
+              <h3>Fracciones al Horno</h3>
+              <p>Elige la fraccion correcta antes de que se quemen las galletas</p>
+            </div>
+            <div class="game-arrow"><i data-lucide="arrow-right"></i></div>
+          </a>
+
+          <a class="game-card gc-blue"
+             href="https://mathplayground.com/fractions_intro.html"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="Abrir juego Fraction Intro">
+            <div class="game-card-icon"><i data-lucide="sliders-horizontal"></i></div>
+            <div class="game-card-body">
+              <span class="game-tag">Juego 2</span>
+              <h3>Constructor de Fracciones</h3>
+              <p>Arrastra y divide figuras para crear fracciones</p>
+            </div>
+            <div class="game-arrow"><i data-lucide="arrow-right"></i></div>
+          </a>
+
+          <a class="game-card gc-yellow"
+             href="https://www.splashlearn.com/math/fractions-games"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="Abrir juego SplashLearn Fractions">
+            <div class="game-card-icon"><i data-lucide="zap"></i></div>
+            <div class="game-card-body">
+              <span class="game-tag">Juego 3</span>
+              <h3>Splash Fracciones</h3>
+              <p>Mini juegos rapidos para practicar fracciones</p>
+            </div>
+            <div class="game-arrow"><i data-lucide="arrow-right"></i></div>
+          </a>
+
+        </div>
+
+        <div class="congrats-bar">
+          <i data-lucide="award"></i>
+          <span>Completaste la leccion. Sigue jugando para aprender mas.</span>
+        </div>
+
+        <div class="bottom-nav">
+          <button class="btn-secondary" id="btn3Back" aria-label="Volver">
+            <i data-lucide="arrow-left"></i>
+            <span>Atras</span>
+          </button>
+          <button class="btn-primary" id="btnRestart" aria-label="Volver al inicio">
+            <i data-lucide="rotate-ccw"></i>
+            <span>Reiniciar</span>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+  </main><!-- /screens-wrapper -->
+
+  <script src="script.js"></script>
+</body>
+</html>
