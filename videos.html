@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Videos - Matematicas Aventura</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="video-page page-videos">
+
+  <!-- ══════ CABECERA ══════ -->
+  <header class="page-header">
+    <button class="back-btn" onclick="window.location.href='index.html'" aria-label="Volver al mapa">
+      <i data-lucide="arrow-left"></i>
+      <span>Mapa</span>
+    </button>
+    <div class="ph-badge phb-mint" aria-hidden="true">
+      <i data-lucide="video"></i>
+    </div>
+    <div class="ph-text">
+      <h1>Videos</h1>
+      <p>Mira y aprende</p>
+    </div>
+  </header>
+
+  <!-- ══════ INSTRUCCIÓN PRINCIPAL ══════ -->
+  <div style="padding: 18px 20px 0; max-width: 880px; margin: 0 auto;">
+    <div style="display:flex;align-items:center;gap:12px;background:var(--mint);border-radius:999px;padding:14px 22px;box-shadow:0 4px 0 var(--mint-dark);">
+      <i data-lucide="volume-2" style="width:26px;height:26px;color:var(--mint-shadow);flex-shrink:0;"></i>
+      <span style="font-size:clamp(1rem,3vw,1.3rem);font-weight:700;color:var(--mint-shadow);">
+        Mira cada video y despues pasa a la Teoria
+      </span>
+    </div>
+  </div>
+
+  <!-- ══════ SECCIONES DE VIDEO ══════ -->
+  <div class="video-sections">
+
+    <!-- ─── SUMAS ─── -->
+    <section class="video-section vs-mint" aria-labelledby="vid-sumas">
+      <div class="vs-header">
+        <div class="vs-icon vs-icon-mint" aria-hidden="true">
+          <i data-lucide="plus-circle"></i>
+        </div>
+        <div class="vs-header-text">
+          <h2 id="vid-sumas">Sumas</h2>
+          <p>Aprender a juntar numeros</p>
+        </div>
+      </div>
+
+      <!--
+        INSTRUCCION PARA EL DOCENTE:
+        Reemplaza el valor de "src" con el enlace de YouTube deseado.
+        Formato: https://www.youtube.com/embed/ID_DEL_VIDEO
+      -->
+      <div class="video-wrapper">
+        <iframe
+          src="https://www.youtube.com/embed/n0FZhQ_GkKw?rel=0&modestbranding=1"
+          title="Video educativo sobre Sumas para primaria"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          loading="lazy"
+        ></iframe>
+      </div>
+
+      <div class="video-tip">
+        <i data-lucide="lightbulb"></i>
+        <span>Sumar es juntar dos grupos para obtener un total mayor</span>
+      </div>
+
+      <div style="margin-top:18px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+        <div style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.7);padding:12px 18px;border-radius:999px;font-size:clamp(1rem,3vw,1.35rem);font-weight:700;color:var(--text);">
+          <i data-lucide="info" style="width:20px;height:20px;color:var(--mint-mid);"></i>
+          Ejemplo: 4 + 3 = 7
+        </div>
+        <div class="touch-hint" aria-hidden="true" style="animation-delay:.3s;">
+          <i data-lucide="hand"></i>
+          <span>Sube el volumen</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── RESTAS ─── -->
+    <section class="video-section vs-coral" aria-labelledby="vid-restas">
+      <div class="vs-header">
+        <div class="vs-icon vs-icon-coral" aria-hidden="true">
+          <i data-lucide="minus-circle"></i>
+        </div>
+        <div class="vs-header-text">
+          <h2 id="vid-restas">Restas</h2>
+          <p>Aprender a quitar numeros</p>
+        </div>
+      </div>
+
+      <!--
+        INSTRUCCION PARA EL DOCENTE:
+        Reemplaza "ID_RESTAS_AQUI" con el ID del video de YouTube sobre Restas.
+        Ejemplo: https://www.youtube.com/embed/AbCdEfGhIjK
+      -->
+      <div class="video-wrapper">
+        <iframe
+          src="https://www.youtube.com/embed/WnjPMRHjsKw?rel=0&modestbranding=1"
+          title="Video educativo sobre Restas para primaria"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          loading="lazy"
+        ></iframe>
+      </div>
+
+      <div class="video-tip">
+        <i data-lucide="lightbulb"></i>
+        <span>Restar es quitar una parte de un grupo para obtener un total menor</span>
+      </div>
+
+      <div style="margin-top:18px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+        <div style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.7);padding:12px 18px;border-radius:999px;font-size:clamp(1rem,3vw,1.35rem);font-weight:700;color:var(--text);">
+          <i data-lucide="info" style="width:20px;height:20px;color:var(--coral-mid);"></i>
+          Ejemplo: 9 - 4 = 5
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── FRACCIONES ─── -->
+    <section class="video-section vs-lav" aria-labelledby="vid-fracciones">
+      <div class="vs-header">
+        <div class="vs-icon vs-icon-lav" aria-hidden="true">
+          <i data-lucide="divide-circle"></i>
+        </div>
+        <div class="vs-header-text">
+          <h2 id="vid-fracciones">Fracciones</h2>
+          <p>Aprender a dividir en partes iguales</p>
+        </div>
+      </div>
+
+      <!--
+        INSTRUCCION PARA EL DOCENTE:
+        Reemplaza "ID_FRACCIONES_AQUI" con el ID del video de YouTube sobre Fracciones.
+        Ejemplo: https://www.youtube.com/embed/AbCdEfGhIjK
+      -->
+      <div class="video-wrapper">
+        <iframe
+          src="https://www.youtube.com/embed/n0FZhQ_GkKw?rel=0&modestbranding=1"
+          title="Video educativo sobre Fracciones para primaria"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          loading="lazy"
+        ></iframe>
+      </div>
+
+      <div class="video-tip">
+        <i data-lucide="lightbulb"></i>
+        <span>Una fraccion divide algo en partes iguales: el numerador y el denominador</span>
+      </div>
+
+      <div style="margin-top:18px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+        <div style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.7);padding:12px 18px;border-radius:999px;font-size:clamp(1rem,3vw,1.35rem);font-weight:700;color:var(--text);">
+          <i data-lucide="info" style="width:20px;height:20px;color:var(--lav-mid);"></i>
+          Ejemplo: 1/2 es la mitad
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ══════ BARRA DE NAVEGACION INFERIOR ══════ -->
+  <div style="padding:28px 20px 40px;display:flex;justify-content:center;gap:14px;flex-wrap:wrap;max-width:880px;margin:0 auto;">
+    <button class="btn btn-white btn-lg" onclick="window.location.href='index.html'">
+      <i data-lucide="map"></i>
+      <span>Volver al Mapa</span>
+    </button>
+    <button class="btn btn-sky btn-lg" onclick="window.location.href='teoria.html'">
+      <span>Siguiente: Teoria</span>
+      <i data-lucide="arrow-right"></i>
+    </button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

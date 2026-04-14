@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Teoria - Matematicas Aventura</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ─── Regla de suma animada ─── */
+    .sum-rule {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      padding: 24px 14px;
+      background: var(--white);
+      border-radius: var(--r-lg);
+      box-shadow: 0 6px 0 rgba(0,0,0,.1);
+      margin-bottom: 18px;
+    }
+    .sum-group {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .s-ball {
+      width: clamp(36px,9vw,52px);
+      height: clamp(36px,9vw,52px);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: clamp(1.1rem,3vw,1.5rem);
+      font-weight: 700;
+      animation: ball-appear .4s var(--ease-b, cubic-bezier(.34,1.56,.64,1)) both;
+    }
+    .s-ball.mint  { background: var(--mint-mid);  color: #051a0e; }
+    .s-ball.sky   { background: var(--sky-mid);   color: #040f1c; }
+    .s-ball.cream { background: var(--cream-mid); color: #281b00; }
+    @keyframes ball-appear {
+      from { transform: scale(0); opacity: 0; }
+      to   { transform: scale(1); opacity: 1; }
+    }
+    .s-ball:nth-child(1) { animation-delay: .05s; }
+    .s-ball:nth-child(2) { animation-delay: .12s; }
+    .s-ball:nth-child(3) { animation-delay: .19s; }
+    .s-ball:nth-child(4) { animation-delay: .26s; }
+    .s-ball:nth-child(5) { animation-delay: .33s; }
+
+    .op-label {
+      font-size: clamp(2rem,7vw,3.5rem);
+      font-weight: 700;
+      color: var(--text-mid);
+    }
+    .result-bubble {
+      background: var(--bg);
+      border-radius: var(--r-md);
+      padding: 10px 20px;
+      font-size: clamp(2.2rem,8vw,4rem);
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    /* ─── Cinta de resta ─── */
+    .resta-strip {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 20px 14px;
+      background: var(--white);
+      border-radius: var(--r-lg);
+      box-shadow: 0 6px 0 rgba(0,0,0,.1);
+      margin-bottom: 18px;
+    }
+    .r-box {
+      width: clamp(46px,11vw,64px);
+      height: clamp(46px,11vw,64px);
+      border-radius: var(--r-sm);
+      display: flex; align-items: center; justify-content: center;
+      font-size: clamp(1.2rem,3.5vw,1.8rem);
+      font-weight: 700;
+    }
+    .r-box.active { background: var(--coral); color: var(--coral-shadow); }
+    .r-box.gone {
+      background: rgba(0,0,0,.07);
+      color: rgba(0,0,0,.2);
+      position: relative;
+    }
+    .r-box.gone::before, .r-box.gone::after {
+      content: '';
+      position: absolute; inset: 8px;
+      border-top: 4px solid rgba(0,0,0,.25);
+    }
+    .r-box.gone::before { transform: rotate(45deg); }
+    .r-box.gone::after  { transform: rotate(-45deg); }
+
+    /* ─── Fracción visual interactiva ─── */
+    .frac-interactive {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 24px 14px;
+      background: var(--white);
+      border-radius: var(--r-lg);
+      box-shadow: 0 6px 0 rgba(0,0,0,.1);
+      margin-bottom: 18px;
+      align-items: center;
+    }
+    .frac-selector {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .frac-sel-btn {
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-family: 'Fredoka', sans-serif;
+      font-size: clamp(1rem,3vw,1.3rem);
+      font-weight: 700;
+      border: 3px solid transparent;
+      cursor: pointer;
+      transition: all .15s;
+      background: var(--lav);
+      color: var(--lav-shadow);
+    }
+    .frac-sel-btn.active {
+      border-color: var(--lav-shadow);
+      background: var(--lav-mid);
+      color: #fff;
+    }
+    .frac-display-row {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .frac-typo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .ft-num { font-size: clamp(2.5rem,8vw,4rem); font-weight: 700; color: var(--lav-mid); line-height: 1; }
+    .ft-bar { width: 100%; height: 5px; background: var(--text); border-radius: 3px; margin: 6px 0; }
+    .ft-den { font-size: clamp(2.5rem,8vw,4rem); font-weight: 700; color: var(--sky-mid); line-height: 1; }
+
+    /* Barra visual de fracción */
+    .frac-visual-bar {
+      display: flex;
+      width: 100%;
+      max-width: 360px;
+      height: clamp(56px,14vw,76px);
+      border-radius: var(--r-md);
+      overflow: hidden;
+      border: 4px solid rgba(0,0,0,.12);
+    }
+    .fvb-part {
+      flex: 1;
+      border-right: 3px solid rgba(0,0,0,.12);
+      transition: background .3s;
+    }
+    .fvb-part:last-child { border-right: none; }
+    .fvb-part.on  { background: var(--lav-mid); }
+    .fvb-part.off { background: var(--lav);     }
+
+    /* Etiqueta fracción */
+    .frac-caption {
+      font-size: clamp(1.1rem,3vw,1.4rem);
+      font-weight: 700;
+      color: var(--text-mid);
+      text-align: center;
+    }
+
+    /* ─── Definición visual (numerador / denominador) ─── */
+    .def-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .def-card {
+      flex: 1;
+      min-width: 140px;
+      background: var(--white);
+      border-radius: var(--r-lg);
+      padding: 20px 16px;
+      box-shadow: 0 6px 0 rgba(0,0,0,.1);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+      text-align: center;
+    }
+    .def-card .dc-number {
+      font-size: clamp(3rem,10vw,5rem);
+      font-weight: 700;
+      line-height: 1;
+      width: clamp(70px,18vw,96px);
+      height: clamp(70px,18vw,96px);
+      border-radius: var(--r-md);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .dc-top  { background: var(--lav); color: var(--lav-shadow); }
+    .dc-bot  { background: var(--sky); color: var(--sky-shadow); }
+    .def-card h3 { font-size: clamp(1.1rem,3.2vw,1.5rem); font-weight: 700; }
+    .def-card p  { font-size: clamp(.95rem,2.8vw,1.2rem); color: var(--text-mid); line-height: 1.4; }
+  </style>
+</head>
+<body class="theory-page page-teoria">
+
+  <!-- ══════ CABECERA ══════ -->
+  <header class="page-header">
+    <button class="back-btn" onclick="window.location.href='index.html'" aria-label="Volver al mapa">
+      <i data-lucide="arrow-left"></i>
+      <span>Mapa</span>
+    </button>
+    <div class="ph-badge phb-sky" aria-hidden="true">
+      <i data-lucide="book-open"></i>
+    </div>
+    <div class="ph-text">
+      <h1>Teoria</h1>
+      <p>Lee y comprende</p>
+    </div>
+  </header>
+
+  <!-- ══════ INSTRUCCIÓN ══════ -->
+  <div style="padding:16px 20px 0;max-width:880px;margin:0 auto;">
+    <div style="display:flex;align-items:center;gap:12px;background:var(--sky);border-radius:999px;padding:14px 22px;box-shadow:0 4px 0 var(--sky-dark);">
+      <i data-lucide="eye" style="width:26px;height:26px;color:var(--sky-shadow);flex-shrink:0;"></i>
+      <span style="font-size:clamp(1rem,3vw,1.3rem);font-weight:700;color:var(--sky-shadow);">
+        Lee cada seccion y observa los ejemplos de colores
+      </span>
+    </div>
+  </div>
+
+  <!-- ══════ SECCIONES DE TEORIA ══════ -->
+  <div class="theory-sections">
+
+    <!-- ─── SUMAS ─── -->
+    <section class="theory-section ts-mint" aria-labelledby="ts-sumas">
+      <div class="theory-header">
+        <div class="theory-icon ti-mint" aria-hidden="true">
+          <i data-lucide="plus-circle"></i>
+        </div>
+        <div class="theory-hd">
+          <h2 id="ts-sumas">Sumas</h2>
+          <p>Juntar grupos para obtener un total</p>
+        </div>
+      </div>
+
+      <!-- Concepto -->
+      <div class="concept-card">
+        <h3>Que es sumar?</h3>
+        <p>
+          Sumar es <strong>unir dos o mas grupos</strong> de objetos para contar
+          cuantos hay en total. El signo de la suma es el <strong>mas (+)</strong>.
+        </p>
+      </div>
+
+      <!-- Visual con pelotas de colores -->
+      <div class="sum-rule">
+        <div class="sum-group">
+          <div class="s-ball mint">1</div>
+          <div class="s-ball mint">2</div>
+          <div class="s-ball mint">3</div>
+        </div>
+        <div class="op-label">+</div>
+        <div class="sum-group">
+          <div class="s-ball sky">4</div>
+          <div class="s-ball sky">5</div>
+        </div>
+        <div class="op-label">=</div>
+        <div class="result-bubble">5</div>
+      </div>
+
+      <!-- Fórmula grande -->
+      <div class="formula-row">
+        <div class="f-block fb-mint">3</div>
+        <div class="f-op">+</div>
+        <div class="f-block fb-sky">2</div>
+        <div class="f-op">=</div>
+        <div class="f-block fb-result">5</div>
+      </div>
+
+      <!-- Regla -->
+      <div class="concept-card">
+        <h3>Regla de oro</h3>
+        <p>
+          El <strong>orden no cambia el resultado</strong>.
+          <br />3 + 2 es igual a 2 + 3. Los dos dan 5.
+        </p>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+        <div class="touch-hint" aria-hidden="true">
+          <i data-lucide="hand"></i>
+          <span>Cuenta las pelotas de arriba</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── RESTAS ─── -->
+    <section class="theory-section ts-coral" aria-labelledby="ts-restas">
+      <div class="theory-header">
+        <div class="theory-icon ti-coral" aria-hidden="true">
+          <i data-lucide="minus-circle"></i>
+        </div>
+        <div class="theory-hd">
+          <h2 id="ts-restas">Restas</h2>
+          <p>Quitar para obtener lo que queda</p>
+        </div>
+      </div>
+
+      <!-- Concepto -->
+      <div class="concept-card">
+        <h3>Que es restar?</h3>
+        <p>
+          Restar es <strong>quitar una cantidad</strong> de un grupo.
+          Lo que queda es el resultado. El signo de la resta es el <strong>menos (-)</strong>.
+        </p>
+      </div>
+
+      <!-- Visual: 7 cajas, 3 tachadas -->
+      <div class="resta-strip">
+        <div class="r-box active">1</div>
+        <div class="r-box active">2</div>
+        <div class="r-box active">3</div>
+        <div class="r-box active">4</div>
+        <div class="r-box gone"  aria-label="quitado"></div>
+        <div class="r-box gone"  aria-label="quitado"></div>
+        <div class="r-box gone"  aria-label="quitado"></div>
+      </div>
+      <div style="text-align:center;font-size:clamp(1rem,3vw,1.3rem);font-weight:700;color:var(--text-mid);margin-bottom:16px;">
+        7 - 3 = 4 (los cuadros color coral son los que quedan)
+      </div>
+
+      <!-- Fórmula -->
+      <div class="formula-row">
+        <div class="f-block fb-coral">7</div>
+        <div class="f-op">-</div>
+        <div class="f-block fb-cream">3</div>
+        <div class="f-op">=</div>
+        <div class="f-block fb-result">4</div>
+      </div>
+
+      <!-- Regla -->
+      <div class="concept-card">
+        <h3>Importante</h3>
+        <p>
+          En la resta el <strong>orden si importa</strong>.
+          <br />7 - 3 = 4, pero 3 - 7 no es posible en numeros naturales.
+        </p>
+      </div>
+    </section>
+
+    <!-- ─── FRACCIONES ─── -->
+    <section class="theory-section ts-lav" aria-labelledby="ts-fracciones">
+      <div class="theory-header">
+        <div class="theory-icon ti-lav" aria-hidden="true">
+          <i data-lucide="divide-circle"></i>
+        </div>
+        <div class="theory-hd">
+          <h2 id="ts-fracciones">Fracciones</h2>
+          <p>Dividir algo en partes iguales</p>
+        </div>
+      </div>
+
+      <!-- Concepto -->
+      <div class="concept-card">
+        <h3>Que es una fraccion?</h3>
+        <p>
+          Una fraccion representa <strong>una parte de un todo</strong>.
+          Se escribe con un numero arriba y uno abajo separados por una linea.
+        </p>
+      </div>
+
+      <!-- Definicion numerador / denominador -->
+      <div class="def-row" style="margin-bottom:18px;">
+        <div class="def-card">
+          <div class="dc-number dc-top">3</div>
+          <h3>Numerador</h3>
+          <p>El numero de <strong>arriba</strong>. Dice cuantas partes tomamos.</p>
+        </div>
+        <div class="def-card">
+          <div class="dc-number dc-bot">4</div>
+          <h3>Denominador</h3>
+          <p>El numero de <strong>abajo</strong>. Dice en cuantas partes se divide el todo.</p>
+        </div>
+      </div>
+
+      <!-- Fracción interactiva: selector -->
+      <div class="frac-interactive" role="region" aria-label="Visualizador de fracciones">
+        <p style="font-size:clamp(1.1rem,3vw,1.4rem);font-weight:700;color:var(--text-mid);">
+          Toca una fraccion para verla
+        </p>
+        <div class="frac-selector">
+          <button class="frac-sel-btn active" data-num="1" data-den="2" aria-pressed="true">1/2</button>
+          <button class="frac-sel-btn" data-num="1" data-den="3" aria-pressed="false">1/3</button>
+          <button class="frac-sel-btn" data-num="3" data-den="4" aria-pressed="false">3/4</button>
+          <button class="frac-sel-btn" data-num="2" data-den="5" aria-pressed="false">2/5</button>
+        </div>
+        <div class="frac-display-row">
+          <div class="frac-typo">
+            <span class="ft-num" id="fracNum">1</span>
+            <span class="ft-bar" role="separator"></span>
+            <span class="ft-den" id="fracDen">2</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px;align-items:center;width:100%;max-width:360px;">
+            <div class="frac-visual-bar" id="fracBar" role="img" aria-label="Barra visual de fraccion">
+              <!-- Se genera por JS -->
+            </div>
+            <p class="frac-caption" id="fracCaption">1 de cada 2 partes</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ejemplos del mundo real -->
+      <div class="concept-card">
+        <h3>Ejemplos en la vida real</h3>
+        <p>
+          Una pizza dividida en 4 partes: si comes 1 parte, comiste
+          <strong>1/4</strong> (un cuarto) de la pizza.
+          <br /><br />
+          Un pastel dividido en 2 partes iguales: cada parte es
+          <strong>1/2</strong> (la mitad).
+        </p>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div class="touch-hint" aria-hidden="true">
+          <i data-lucide="hand"></i>
+          <span>Toca los botones de arriba para cambiar la fraccion</span>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ══════ NAVEGACIÓN INFERIOR ══════ -->
+  <div style="padding:28px 20px 44px;display:flex;justify-content:center;gap:14px;flex-wrap:wrap;max-width:880px;margin:0 auto;">
+    <button class="btn btn-white btn-lg" onclick="window.location.href='videos.html'">
+      <i data-lucide="arrow-left"></i>
+      <span>Videos</span>
+    </button>
+    <button class="btn btn-cream btn-lg" onclick="window.location.href='juegos.html'">
+      <span>Siguiente: Juegos</span>
+      <i data-lucide="arrow-right"></i>
+    </button>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    /* ─── Fracción interactiva ─── */
+    (function () {
+      const btns    = document.querySelectorAll(".frac-sel-btn");
+      const numEl   = document.getElementById("fracNum");
+      const denEl   = document.getElementById("fracDen");
+      const barEl   = document.getElementById("fracBar");
+      const caption = document.getElementById("fracCaption");
+
+      function renderFrac(num, den) {
+        numEl.textContent = num;
+        denEl.textContent = den;
+        barEl.innerHTML   = "";
+        for (let i = 0; i < den; i++) {
+          const part = document.createElement("div");
+          part.className = "fvb-part " + (i < num ? "on" : "off");
+          barEl.appendChild(part);
+        }
+        caption.textContent = `${num} de cada ${den} parte${den > 1 ? "s" : ""}`;
+      }
+
+      btns.forEach((btn) => {
+        btn.addEventListener("pointerdown", (e) => {
+          e.preventDefault();
+          btns.forEach(b => { b.classList.remove("active"); b.setAttribute("aria-pressed","false"); });
+          btn.classList.add("active");
+          btn.setAttribute("aria-pressed","true");
+          renderFrac(
+            parseInt(btn.dataset.num, 10),
+            parseInt(btn.dataset.den, 10)
+          );
+        });
+      });
+
+      renderFrac(1, 2); // Estado inicial
+    })();
+  </script>
+</body>
+</html>

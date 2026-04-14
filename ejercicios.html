@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Ejercicios - Matematicas Aventura</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="ejercicios-page page-ejercicios">
+
+  <!-- ══════ CABECERA ══════ -->
+  <header class="page-header">
+    <button class="back-btn" onclick="window.location.href='index.html'" aria-label="Volver al mapa">
+      <i data-lucide="arrow-left"></i>
+      <span>Mapa</span>
+    </button>
+    <div class="ph-badge phb-coral" aria-hidden="true">
+      <i data-lucide="pencil-line"></i>
+    </div>
+    <div class="ph-text">
+      <h1>Ejercicios</h1>
+      <p>Pon a prueba lo que sabes</p>
+    </div>
+  </header>
+
+  <!-- ══════ QUIZ ══════ -->
+  <div class="quiz-container" role="main">
+
+    <!-- SELECTOR DE TEMA -->
+    <div class="topic-selector" role="tablist" aria-label="Selecciona el tema">
+      <button class="topic-tab tt-mint active" data-topic="sumas" role="tab" aria-selected="true">
+        <i data-lucide="plus-circle" style="width:18px;height:18px;display:inline-block;vertical-align:middle;margin-right:4px;"></i>
+        Sumas
+      </button>
+      <button class="topic-tab tt-coral" data-topic="restas" role="tab" aria-selected="false">
+        <i data-lucide="minus-circle" style="width:18px;height:18px;display:inline-block;vertical-align:middle;margin-right:4px;"></i>
+        Restas
+      </button>
+      <button class="topic-tab tt-lav" data-topic="fracciones" role="tab" aria-selected="false">
+        <i data-lucide="divide-circle" style="width:18px;height:18px;display:inline-block;vertical-align:middle;margin-right:4px;"></i>
+        Fracciones
+      </button>
+    </div>
+
+    <!-- BARRA DE PROGRESO -->
+    <div class="quiz-progress" aria-label="Progreso del quiz">
+      <div class="qp-track" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+        <div class="qp-fill" id="qpFill" style="width:0%"></div>
+      </div>
+      <span class="qp-label" id="qpLabel">1 / 5</span>
+    </div>
+
+    <!-- CONTENIDO DEL QUIZ -->
+    <div id="quizContent">
+
+      <!-- TARJETA DE PREGUNTA -->
+      <div class="question-card" role="region" aria-live="polite">
+        <div class="question-num" id="questionNum">Pregunta 1</div>
+        <div class="question-text" id="questionText">3 + 5 = ?</div>
+        <div class="answer-grid" role="group" aria-label="Opciones de respuesta">
+          <button class="answer-btn ans-a" aria-label="Opcion A">0</button>
+          <button class="answer-btn ans-b" aria-label="Opcion B">0</button>
+          <button class="answer-btn ans-c" aria-label="Opcion C">0</button>
+          <button class="answer-btn ans-d" aria-label="Opcion D">0</button>
+        </div>
+      </div>
+
+      <!-- FEEDBACK -->
+      <div class="feedback-bar" id="feedbackBar" role="alert" aria-live="assertive">
+        <!-- Se rellena por JS -->
+      </div>
+
+      <!-- BOTÓN SIGUIENTE PREGUNTA -->
+      <button class="btn-next-q" id="btnNextQ" aria-label="Siguiente pregunta">
+        <span>Siguiente pregunta</span>
+        <i data-lucide="arrow-right"></i>
+      </button>
+
+    </div><!-- /quizContent -->
+
+    <!-- PANTALLA DE RESULTADO -->
+    <div class="result-screen" id="resultScreen" role="region" aria-label="Resultado final">
+      <div class="result-trophy" aria-hidden="true">
+        <i data-lucide="award"></i>
+      </div>
+      <div class="result-score" id="resultScore" aria-live="polite">0 / 5</div>
+      <p class="result-msg" id="resultMsg">Muy bien hecho</p>
+      <button class="btn btn-mint btn-lg" id="btnRestart" aria-label="Intentar de nuevo">
+        <i data-lucide="rotate-ccw"></i>
+        <span>Intentar de nuevo</span>
+      </button>
+      <button class="btn btn-white btn-md" onclick="window.location.href='index.html'" aria-label="Volver al mapa">
+        <i data-lucide="map"></i>
+        <span>Volver al mapa</span>
+      </button>
+    </div>
+
+    <!-- INDICACIÓN TÁCTIL -->
+    <div style="margin-top:18px;display:flex;justify-content:center;">
+      <div class="touch-hint" aria-hidden="true">
+        <i data-lucide="hand"></i>
+        <span>Toca la respuesta correcta</span>
+      </div>
+    </div>
+
+  </div><!-- /quiz-container -->
+
+  <script src="script.js"></script>
+</body>
+</html>

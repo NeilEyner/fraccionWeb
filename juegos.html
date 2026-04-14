@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Juegos - Matematicas Aventura</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="games-page page-juegos">
+
+  <!-- ══════ CABECERA ══════ -->
+  <header class="page-header">
+    <button class="back-btn" onclick="window.location.href='index.html'" aria-label="Volver al mapa">
+      <i data-lucide="arrow-left"></i>
+      <span>Mapa</span>
+    </button>
+    <div class="ph-badge phb-cream" aria-hidden="true">
+      <i data-lucide="gamepad-2"></i>
+    </div>
+    <div class="ph-text">
+      <h1>Juegos</h1>
+      <p>Juega y aprende</p>
+    </div>
+  </header>
+
+  <!-- ══════ INSTRUCCIÓN ══════ -->
+  <div style="padding:16px 20px 4px;max-width:640px;margin:0 auto;">
+    <div style="display:flex;align-items:center;gap:12px;background:var(--cream);border-radius:999px;padding:14px 22px;box-shadow:0 4px 0 var(--cream-dark);">
+      <i data-lucide="hand" style="width:26px;height:26px;color:var(--cream-shadow);flex-shrink:0;"></i>
+      <span style="font-size:clamp(1rem,3vw,1.3rem);font-weight:700;color:var(--cream-shadow);">
+        Toca una tarjeta para abrir el juego
+      </span>
+    </div>
+  </div>
+
+  <!-- ══════ TARJETAS DE JUEGO ══════ -->
+  <div class="games-grid" role="main">
+
+    <!-- JUEGO 1: SUMAS -->
+    <button
+      class="game-card gc-mint anim-up delay-1"
+      data-href="https://www.funbrain.com/games/math-arcade"
+      aria-label="Jugar Sumas en sitio externo"
+    >
+      <div class="gc-icon" aria-hidden="true">
+        <i data-lucide="plus-circle"></i>
+      </div>
+      <div class="gc-body">
+        <span class="gc-tag">Juego 1</span>
+        <h2>Jugar Sumas</h2>
+        <p>Practica la suma con retos cronometrados y niveles de dificultad</p>
+      </div>
+      <div class="gc-arrow" aria-hidden="true">
+        <i data-lucide="arrow-right"></i>
+      </div>
+    </button>
+
+    <!-- JUEGO 2: RESTAS -->
+    <button
+      class="game-card gc-coral anim-up delay-2"
+      data-href="https://mathplayground.com/mathman.html"
+      aria-label="Jugar Restas en sitio externo"
+    >
+      <div class="gc-icon" aria-hidden="true">
+        <i data-lucide="minus-circle"></i>
+      </div>
+      <div class="gc-body">
+        <span class="gc-tag">Juego 2</span>
+        <h2>Jugar Restas</h2>
+        <p>Pon a prueba tus habilidades de resta con ejercicios divertidos</p>
+      </div>
+      <div class="gc-arrow" aria-hidden="true">
+        <i data-lucide="arrow-right"></i>
+      </div>
+    </button>
+
+    <!-- JUEGO 3: FRACCIONES -->
+    <button
+      class="game-card gc-lav anim-up delay-3"
+      data-href="https://www.splashlearn.com/math/fractions-games"
+      aria-label="Jugar Fracciones en sitio externo"
+    >
+      <div class="gc-icon" aria-hidden="true">
+        <i data-lucide="divide-circle"></i>
+      </div>
+      <div class="gc-body">
+        <span class="gc-tag">Juego 3</span>
+        <h2>Jugar Fracciones</h2>
+        <p>Explora fracciones con juegos visuales y coloridos</p>
+      </div>
+      <div class="gc-arrow" aria-hidden="true">
+        <i data-lucide="arrow-right"></i>
+      </div>
+    </button>
+
+  </div>
+
+  <!-- ══════ LINKS ADICIONALES ══════ -->
+  <div style="padding:0 20px 16px;max-width:640px;margin:0 auto;">
+    <h2 style="font-size:clamp(1.2rem,3.5vw,1.7rem);font-weight:700;color:var(--text-mid);margin-bottom:14px;">
+      Mas recursos para practicar
+    </h2>
+  </div>
+
+  <div class="game-links">
+    <button
+      class="game-link-item anim-up delay-4"
+      data-href="https://www.mathgames.com/grade/grade1"
+      aria-label="Abrir Math Games en sitio externo"
+    >
+      <i data-lucide="external-link" class="gli-icon"></i>
+      <span class="gli-text">Math Games - Nivel Primaria</span>
+      <i data-lucide="chevron-right" class="gli-arr"></i>
+    </button>
+
+    <button
+      class="game-link-item anim-up delay-4"
+      data-href="https://www.coolmathgames.com"
+      aria-label="Abrir Cool Math Games en sitio externo"
+    >
+      <i data-lucide="external-link" class="gli-icon"></i>
+      <span class="gli-text">Cool Math Games</span>
+      <i data-lucide="chevron-right" class="gli-arr"></i>
+    </button>
+
+    <button
+      class="game-link-item anim-up delay-5"
+      data-href="https://es.khanacademy.org/math/cc-1st-grade-math"
+      aria-label="Abrir Khan Academy en sitio externo"
+    >
+      <i data-lucide="external-link" class="gli-icon"></i>
+      <span class="gli-text">Khan Academy - Matematicas</span>
+      <i data-lucide="chevron-right" class="gli-arr"></i>
+    </button>
+  </div>
+
+  <!-- ══════ NAVEGACION INFERIOR ══════ -->
+  <div style="padding:24px 20px 44px;display:flex;justify-content:center;gap:14px;flex-wrap:wrap;max-width:640px;margin:0 auto;">
+    <button class="btn btn-white btn-lg" onclick="window.location.href='teoria.html'">
+      <i data-lucide="arrow-left"></i>
+      <span>Teoria</span>
+    </button>
+    <button class="btn btn-coral btn-lg" onclick="window.location.href='ejercicios.html'">
+      <span>Siguiente: Ejercicios</span>
+      <i data-lucide="arrow-right"></i>
+    </button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
